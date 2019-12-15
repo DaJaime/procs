@@ -13,10 +13,10 @@ public class DAOContact {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		Phone p1=new Phone("09090909","mobile");
-		//p1.setContact(contact);
-		//contact.getPhones().add(p1);
+		p1.setContact(contact);
+		contact.getPhones().add(p1);
 		session.saveOrUpdate(contact);
-		//session.saveOrUpdate(p1);
+		session.saveOrUpdate(p1);
 		tx.commit();
 	}
 	

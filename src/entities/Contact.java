@@ -8,7 +8,7 @@ public class Contact {
 	private String firstName;
 	private String lastName;
 	private String email;
-	//Set <Phone> phones = new HashSet<Phone>();
+	Set <Phone> phones = new HashSet<Phone>();
 	
 	public Contact() {
 	}
@@ -51,12 +51,12 @@ public class Contact {
 		this.email = email;
 	}
 
-/*	public Set <Phone> getPhones() {
+	public Set <Phone> getPhones() {
 		return phones;
 	}
 
 	public void setPhones(Set <Phone> phones) {
 		this.phones = phones;
-	}*/
+	}
 		
 }

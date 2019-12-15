@@ -11,7 +11,7 @@
       </id>
       
       <property name = "number" column = "NUMBER"/>
-      <property name = "desc" column = "DESC"/>
-     <!--  <many-to-one name="contact" column="ID_CONT" class="Contact"/> -->    
+      <property name = "desc" column = "DESCRIPTION"/>
+     <many-to-one name="contact" column="ID_CONT" class="Contact"/>  
    </class>
 </hibernate-mapping>

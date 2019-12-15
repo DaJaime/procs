@@ -1,0 +1,57 @@
+
+# IDE
+.idea
+.vscode
+*.iml
+.project
+.classpath
+.settings
+
+#Vagrant
+.vagrant
+
+#Mac
+.DS_Store
+
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+
+# Translations
+*.mo
+*.pot
+
+# Sphinx documentation
+docs/_build/
+
+# MvnBuilder
+target/
+
+# dotenv
+.env
+
+# virtualenv
+.venv
+venv/
+ENV/
+
+# ignore xls files
+*.xls
+*.xlsx
+
+# Ingore redis file
+*.rdb
+
+# Ignore directories
+log/*
+output
+reports
+

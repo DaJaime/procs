@@ -4,7 +4,7 @@ public class Phone {
 	private long id;
 	private String number;
 	private String desc;
-	//private Contact contact = null;
+	private Contact contact = null;
 	
 	public Phone(){
 	}
@@ -44,13 +44,13 @@ public class Phone {
 		this.desc = description;
 	}
 	
-	/*public Contact getContact() {
+	public Contact getContact() {
 		return contact;
 	}
 
 	public void setContact(Contact contact) {
 		this.contact = contact;
-	}*/
+	}
 
 	@Override
 	public int hashCode() {
