@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 import = "dao.DAOContact"
-import = "dao.DAOPhone"
 import = "entities.Contact"
 import = "entities.Phone"
 %>
@@ -16,7 +15,9 @@ import = "entities.Phone"
 <%
    DAOContact dao = new DAOContact();
   // DAOPhone daoPhone = new DAOPhone();
-   dao.saveOrUpdateContact(new Contact ("Damien", "Jaime", "lalala@gmail.com"));
+   Contact c = new Contact ("Damien", "Jaime", "lalala@gmail.com");
+   Phone p = new Phone ("0102030405", "haseebtropfort");
+   dao.saveOrUpdateContact(c,p);
    /* dao.deleteContact(1);
    dao.saveOrUpdateContact(new Contact ("Toto", "Tata", "lilala@gmail.com"));
    Contact c = new Contact ("Haseeb", "Chauchau", "haseeb@gmail.com");
