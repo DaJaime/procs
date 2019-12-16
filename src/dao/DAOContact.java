@@ -12,11 +12,7 @@ public class DAOContact {
 	public void saveOrUpdateContact(Contact contact){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
-		Phone p1=new Phone("09090909","mobile");
-		p1.setContact(contact);
-		contact.getPhones().add(p1);
 		session.saveOrUpdate(contact);
-		session.saveOrUpdate(p1);
 		tx.commit();
 	}
 	
@@ -32,7 +28,35 @@ public class DAOContact {
 	public Contact getContact(long id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Contact c = (Contact) session.get(Contact.class, id);
+		session.close();
 		return c;
+	}
+	
+	/********************************************
+	 **                 Phone                 ***
+	 ********************************************/
+	
+	public void saveOrUpdatePhone(Phone phone){
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		session.saveOrUpdate(phone);
+		tx.commit();
+	}
+	
+	public void deletePhone(long id){
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+		Transaction tx = session.beginTransaction();
+		
+		Phone phone = (Phone)session.get( Phone.class, id );
+		session.delete(phone);
+		tx.commit();
+	}
+	
+	public Phone getPhone(long id) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Phone phone = (Phone) session.get(Phone.class, id);
+		session.close();
+		return phone;
 	}
 	
 }
