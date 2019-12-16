@@ -31,7 +31,7 @@ docs/_build/
 
 # MvnBuilder
 target/
-build/*
+build/
 
 # ignore xls files
 *.xls
