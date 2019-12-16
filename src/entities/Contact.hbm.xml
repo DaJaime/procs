@@ -4,19 +4,23 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping package="entities">
-   <class name = "Contact">
-      
-      <id name = "id" type = "long" column = "ID_CONTACT">
-         <generator class="increment"/>
-      </id>
-      
-      <property name = "firstName" column = "FIRSTNAME"/>
-      <property name = "lastName" column = "LASTNAME"/>
-      <property name = "email" column = "EMAIL"/>
-      <set name="phones" inverse=" true " cascade="all">
-       <key column="ID_CONT" />
-       <one-to-many class="Phone"/>
-	  </set>
-      
-   </class>
+	<class name = "Contact">
+		     
+		<id name = "id" type = "long" column = "ID_CONTACT">
+			<generator class="increment"/>
+		</id>
+		
+		<property name = "firstName" column = "FIRSTNAME"/>
+		<property name = "lastName" column = "LASTNAME"/>
+		<property name = "email" column = "EMAIL"/>
+		<set name="phones" inverse=" true " cascade="all">
+			<key column="ID_CONT" />
+			<one-to-many class="Phone"/>
+		</set>
+		
+	    <union-subclass name="Entreprise" table="Entreprise">
+	    	<property name="siret" column="SIRET"/>
+		</union-subclass>
+		
+	</class>
 </hibernate-mapping>

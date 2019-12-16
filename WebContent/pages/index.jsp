@@ -2,6 +2,7 @@
 import = "service.ContactService"
 import = "entities.Contact"
 import = "entities.Phone"
+import = "entities.Entreprise"
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -23,6 +24,10 @@ import = "entities.Phone"
 	Phone p2 = service.getPhone(3);
 	p2.setNumber("000000000");
 	service.saveOrUpdatePhone(p2);
+	service.deleteContact(c.getId());
+	Entreprise ent = new Entreprise("entreprise", "siège", "mail@gmail.com", "0000123");
+	service.saveOrUpdateContact(ent);
+	service.addPhone(ent, new Phone ("00002", "Test"));
    %>
    
 </body>
