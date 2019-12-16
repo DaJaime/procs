@@ -7,9 +7,6 @@
 .classpath
 .settings
 
-#Vagrant
-.vagrant
-
 #Mac
 .DS_Store
 
@@ -34,14 +31,7 @@ docs/_build/
 
 # MvnBuilder
 target/
-
-# dotenv
-.env
-
-# virtualenv
-.venv
-venv/
-ENV/
+build/*
 
 # ignore xls files
 *.xls
