@@ -1,5 +1,8 @@
 package dao;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -30,6 +33,22 @@ public class DAOContact {
 		Contact c = (Contact) session.get(Contact.class, id);
 		session.close();
 		return c;
+	}
+	
+	// HQL : retourne une liste de contact filtre sur le firstName
+	public List<Contact> getListContactFilterFirstName(String firstName) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		StringBuffer requet = new StringBuffer();
+		requet.append("select contact from Contact as contact where contact.firstName like '");
+		requet.append(firstName);
+		requet.append("%'");
+		Query requete = session.createQuery(requet.toString());
+		List<Contact> resultats = requete.list();
+		
+		if(!resultats.isEmpty())
+			return resultats;
+		else
+			return null;
 	}
 	
 	/********************************************

@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import dao.DAOContact;
 import entities.Contact;
 import entities.Phone;
@@ -23,6 +25,11 @@ public class ContactService {
 	public Contact getContact(long id){
 		Contact c = dao.getContact(id);
 		return c;
+	}
+	
+	public List<Contact> getListContactFilterFirstName(String firstName) {
+		List<Contact> listContact = dao.getListContactFilterFirstName(firstName);
+		return listContact;
 	}
 	
 	/********************************************
