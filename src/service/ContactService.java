@@ -32,6 +32,10 @@ public class ContactService {
 		return listContact;
 	}
 	
+	public List getListContactFilterlastName(String lastName) {
+		List listContact = dao.getListContactFilterlastName(lastName);
+		return listContact;
+	}
 	/********************************************
 	 **                 Phone                 ***
 	 ********************************************/

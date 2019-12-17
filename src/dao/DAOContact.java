@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -47,6 +48,22 @@ public class DAOContact {
 		
 		if(!resultats.isEmpty())
 			return resultats;
+		else
+			return null;
+	}
+	
+	// SQL : retourne une liste de contact filtre sur le lastName
+	public List getListContactFilterlastName(String lastName) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		StringBuffer requet = new StringBuffer();
+		requet.append("select ID_CONTACT from Contact where LASTNAME like '");
+		requet.append(lastName);
+		requet.append("%'");
+		SQLQuery query = session.createSQLQuery(requet.toString());
+		List lst = query.list();
+		
+		if(!lst.isEmpty())
+			return lst;
 		else
 			return null;
 	}

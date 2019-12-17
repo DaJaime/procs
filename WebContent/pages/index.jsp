@@ -17,7 +17,7 @@ import = "java.util.List"
 <%
 	ContactService service = new ContactService();
 	Contact c = new Contact ("Damien", "Jaime", "lalala@gmail.com");
-	Entreprise e2 = new Entreprise ("Damjai", "azerty", "tututu@gmail.com", "0100");
+	Entreprise e2 = new Entreprise ("Damjai", "Jaidam", "tututu@gmail.com", "0100");
 	service.saveOrUpdateContact(c);
 	service.saveOrUpdateContact(e2);
    	Phone p1 = new Phone("066788876","Mobile");
@@ -31,10 +31,11 @@ import = "java.util.List"
 	Entreprise ent = new Entreprise("entreprise", "siège", "mail@gmail.com", "0000123");
 	service.saveOrUpdateContact(ent);
 	service.addPhone(ent, new Phone ("00002", "Test"));
-	List<Contact> listContact = service.getListContactFilterFirstName("dam");
+	List listContact = service.getListContactFilterlastName("Jai");
 	if(listContact != null){
 		for(int i=0;i<listContact.size();i++){
-			System.out.println(listContact.get(i).toString());
+			System.out.println("----------");
+			System.out.println(listContact.get(i));
 		}
 	}
    %>
