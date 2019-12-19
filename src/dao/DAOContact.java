@@ -6,6 +6,8 @@ import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Restrictions;
 
 import entities.Contact;
 import entities.Phone;
@@ -62,6 +64,16 @@ public class DAOContact {
 		SQLQuery query = session.createSQLQuery(requet.toString());
 		List lst = query.list();
 		
+		if(!lst.isEmpty())
+			return lst;
+		else
+			return null;
+	}
+	
+	// Criteria
+	public List getListContactFilterMail(String mail) {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		List lst = (List) session.createCriteria(Contact.class).add(Restrictions.like("email", "la%")).list();
 		if(!lst.isEmpty())
 			return lst;
 		else

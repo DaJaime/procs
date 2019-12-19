@@ -31,7 +31,7 @@ import = "java.util.List"
 	Entreprise ent = new Entreprise("entreprise", "siège", "mail@gmail.com", "0000123");
 	service.saveOrUpdateContact(ent);
 	service.addPhone(ent, new Phone ("00002", "Test"));
-	List listContact = service.getListContactFilterlastName("Jai");
+	List listContact = service.getListContactFilterMail("Jai");
 	if(listContact != null){
 		for(int i=0;i<listContact.size();i++){
 			System.out.println("----------");
