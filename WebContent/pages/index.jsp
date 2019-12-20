@@ -1,44 +1,26 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-import = "service.ContactService"
-import = "entities.Contact"
-import = "entities.Phone"
-import = "entities.Entreprise"
-import = "java.util.List"
-%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en" >
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Index</title>
+  <meta charset="UTF-8">
+  <title>CSS3 Hover Effect using :after Psuedo Element</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="pages/css/style.css">
+
 </head>
 <body>
-<p>Bonjour</p>
+<!-- partial:index.partial.html -->
+<!--Made with Love by Larry Geams-->
 
-<%
-	ContactService service = new ContactService();
-	Contact c = new Contact ("Damien", "Jaime", "lalala@gmail.com");
-	Entreprise e2 = new Entreprise ("Damjai", "Jaidam", "tututu@gmail.com", "0100");
-	service.saveOrUpdateContact(c);
-	service.saveOrUpdateContact(e2);
-   	Phone p1 = new Phone("066788876","Mobile");
-	service.addPhone(c, p1);
-	service.addPhone(c, new Phone("12345432","Fix"));
-	service.addPhone(new Contact("tata","titi","azert@dzefd.com"), new Phone ("00987","phone"));
-	Phone p2 = service.getPhone(3);
-	p2.setNumber("000000000");
-	service.saveOrUpdatePhone(p2);
-	// service.deleteContact(c.getId());
-	Entreprise ent = new Entreprise("entreprise", "siège", "mail@gmail.com", "0000123");
-	service.saveOrUpdateContact(ent);
-	service.addPhone(ent, new Phone ("00002", "Test"));
-	List listContact = service.getListContactFilterMail("Jai");
-	if(listContact != null){
-		for(int i=0;i<listContact.size();i++){
-			System.out.println("----------");
-			System.out.println(listContact.get(i));
-		}
-	}
-   %>
-   
+<nav>
+  <ul>
+    <li><a href="">Afficher les contacts</a></li>
+    <li><a href="">Afficher les groupes</a></li>
+    <li><a href="">Work</a></li>
+    <li><a href="">Contact</a></li>
+  </ul>
+</nav>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </body>
 </html>
