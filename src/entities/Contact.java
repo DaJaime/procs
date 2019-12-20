@@ -9,6 +9,7 @@ public class Contact {
 	private String lastName;
 	private String email;
 	Set <Phone> phones = new HashSet<Phone>();
+	private long version;
 	
 	public Contact() {
 	}

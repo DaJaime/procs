@@ -1,11 +1,18 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
+import = "service.ContactService"
+import = "entities.Contact"
+import = "entities.Phone"
+import = "entities.Entreprise"
+import = "java.util.List"
+%>
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CSS3 Hover Effect using :after Psuedo Element</title>
+  <title>Contact app</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="pages/css/style.css">
+<link rel="stylesheet" href="./css/style.css">
 
 </head>
 <body>
@@ -20,6 +27,17 @@
     <li><a href="">Contact</a></li>
   </ul>
 </nav>
+
+<%
+	ContactService service = new ContactService();
+	Contact c = new Contact ("Damien", "Jaime", "lalala@gmail.com");
+	service.saveOrUpdateContact(c);
+	/* Phone p = new Phone("0101010110", "Mobile");
+	service.addPhone(c, p);
+	c.setFirstName("Dada");
+	service.saveOrUpdateContact(c); */
+   %>
+   
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </body>
