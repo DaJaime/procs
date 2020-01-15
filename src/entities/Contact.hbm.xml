@@ -5,7 +5,7 @@
 
 <hibernate-mapping package="entities">
 	<class name = "Contact">
-		     
+		<cache usage="read-write"/>
 		<id name = "id" type = "long" column = "ID_CONTACT">
 			<generator class="increment"/>
 		</id>
@@ -14,7 +14,7 @@
 		<property name = "firstName" column = "FIRSTNAME"/>
 		<property name = "lastName" column = "LASTNAME"/>
 		<property name = "email" column = "EMAIL"/>
-		<set name="phones" inverse=" true " cascade="all">
+		<set name="phones" inverse="true " cascade="all">
 			<key column="ID_CONT" />
 			<one-to-many class="Phone"/>
 		</set>

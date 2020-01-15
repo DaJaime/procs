@@ -5,7 +5,7 @@
 
 <hibernate-mapping package="entities">
    <class name ="Phone">
-      
+      <cache usage="read-write"/>
       <id name = "id" column = "ID_PHONE">
          <generator class="increment"/>
       </id>

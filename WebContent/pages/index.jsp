@@ -32,6 +32,10 @@ import = "java.util.List"
 	ContactService service = new ContactService();
 	Contact c = new Contact ("Damien", "Jaime", "lalala@gmail.com");
 	service.saveOrUpdateContact(c);
+	System.out.println("------1----");
+	service.getContact(c.getId());
+	System.out.println("------2----");
+	service.getContact(c.getId());
 	/* Phone p = new Phone("0101010110", "Mobile");
 	service.addPhone(c, p);
 	c.setFirstName("Dada");
