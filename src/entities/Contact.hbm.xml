@@ -9,6 +9,7 @@
 		<id name = "id" type = "long" column = "ID_CONTACT">
 			<generator class="increment"/>
 		</id>
+		<version name="version" type="long" access="field" column="VERSION"/>
 		
 		<property name = "firstName" column = "FIRSTNAME"/>
 		<property name = "lastName" column = "LASTNAME"/>

@@ -7,14 +7,28 @@ import = "entities.Phone"
 import = "entities.Entreprise"
 import = "java.util.List"
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en" >
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Index</title>
+  <meta charset="UTF-8">
+  <title>Contact app</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="./css/style.css">
+
 </head>
 <body>
-<p>Bonjour</p>
+<!-- partial:index.partial.html -->
+<!--Made with Love by Larry Geams-->
+
+<nav>
+  <ul>
+    <li><a href="">Afficher les contacts</a></li>
+    <li><a href="">Afficher les groupes</a></li>
+    <li><a href="">Work</a></li>
+    <li><a href="">Contact</a></li>
+  </ul>
+</nav>
 
 <%
 	//mes services
@@ -43,5 +57,7 @@ import = "java.util.List"
    
    %>
    
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </body>
 </html>
