@@ -27,5 +27,6 @@
 		<!-- liens vers les fichiers de mapping -->
 		<mapping resource="entities/Contact.hbm.xml"/>
 		<mapping resource="entities/Phone.hbm.xml"/>
+        <mapping resource="entities/GroupeContact.hbm.xml"/>
 	</session-factory>
 </hibernate-configuration>

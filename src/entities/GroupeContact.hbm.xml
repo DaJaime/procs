@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping package="entities">
+	<class name = "GroupeContact">
+		     
+		<id name = "id" type = "long" column = "ID_GROUPECONTACT">
+			<generator class="increment"/>
+		</id>
+		
+		<property name = "name" column = "NAME"/>
+		<property name = "description" column = "DESCRIPTION"/>
+		
+		<set name="contacts" table="InGroupe">
+		<key column="ID_GROUPECONTACT"/>
+		<many-to-many class="Contact" column="ID_CONTACT"/>
+		</set>
+		
+	</class>
+</hibernate-mapping>

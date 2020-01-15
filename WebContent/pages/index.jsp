@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 import = "service.ContactService"
+import = "service.GroupeService"
 import = "entities.Contact"
+import = "entities.GroupeContact"
 import = "entities.Phone"
 import = "entities.Entreprise"
 import = "java.util.List"
@@ -29,6 +31,7 @@ import = "java.util.List"
 </nav>
 
 <%
+	//mes services
 	ContactService service = new ContactService();
 	Contact c = new Contact ("Damien", "Jaime", "lalala@gmail.com");
 	service.saveOrUpdateContact(c);
