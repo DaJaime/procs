@@ -13,9 +13,15 @@
 		<property name = "firstName" column = "FIRSTNAME"/>
 		<property name = "lastName" column = "LASTNAME"/>
 		<property name = "email" column = "EMAIL"/>
+		
 		<set name="phones" inverse=" true " cascade="all">
 			<key column="ID_CONT" />
 			<one-to-many class="Phone"/>
+		</set>
+		
+		<set name="groupeContact" cascade="persist, save-update" table="InGroupe" inverse="true">
+			<key column="ID_CONTACT"/>
+			<many-to-many class="GroupeContact" column="ID_GROUPECONTACT"/>
 		</set>
 		
 	    <union-subclass name="Entreprise" table="Entreprise">

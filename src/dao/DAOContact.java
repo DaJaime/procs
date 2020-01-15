@@ -16,6 +16,7 @@ public class DAOContact {
 	public void saveOrUpdateContact(Contact contact){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
+		System.out.println(contact);
 		session.saveOrUpdate(contact);
 		tx.commit();
 	}
@@ -23,7 +24,6 @@ public class DAOContact {
 	public void deleteContact(long id){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
-		
 		Contact c = (Contact)session.get( Contact.class, id );
 		session.delete(c);
 		tx.commit();

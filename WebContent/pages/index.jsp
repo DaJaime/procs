@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
 import = "service.ContactService"
+import = "service.GroupeService"
 import = "entities.Contact"
+import = "entities.GroupeContact"
 import = "entities.Phone"
 import = "entities.Entreprise"
 import = "java.util.List"
@@ -15,29 +17,30 @@ import = "java.util.List"
 <p>Bonjour</p>
 
 <%
+	//mes services
 	ContactService service = new ContactService();
-	Contact c = new Contact ("Damien", "Jaime", "lalala@gmail.com");
-	Entreprise e2 = new Entreprise ("Damjai", "Jaidam", "tututu@gmail.com", "0100");
-	service.saveOrUpdateContact(c);
-	service.saveOrUpdateContact(e2);
-   	Phone p1 = new Phone("066788876","Mobile");
-	service.addPhone(c, p1);
-	service.addPhone(c, new Phone("12345432","Fix"));
-	service.addPhone(new Contact("tata","titi","azert@dzefd.com"), new Phone ("00987","phone"));
-	Phone p2 = service.getPhone(3);
-	p2.setNumber("000000000");
-	service.saveOrUpdatePhone(p2);
-	// service.deleteContact(c.getId());
-	Entreprise ent = new Entreprise("entreprise", "siège", "mail@gmail.com", "0000123");
-	service.saveOrUpdateContact(ent);
-	service.addPhone(ent, new Phone ("00002", "Test"));
-	List listContact = service.getListContactFilterlastName("Jai");
-	if(listContact != null){
-		for(int i=0;i<listContact.size();i++){
-			System.out.println("----------");
-			System.out.println(listContact.get(i));
-		}
-	}
+	GroupeService groupeservice = new GroupeService();
+	
+	//créer contact
+	Contact contact = new Contact("Damien", "Jaime", "lalala@gmail.com");
+	service.saveOrUpdateContact(contact);
+	
+   	//phone
+	Phone p1 = new Phone("066788876","Mobile");
+	service.addPhone(contact, p1);
+	service.addPhone(contact, new Phone("12345432","Fix"));
+	
+	//créer groupe
+	GroupeContact groupecontact = new GroupeContact("Amies", "bla");
+	
+	groupeservice.addContactGroupe(groupecontact,contact);
+	System.out.println(groupecontact.getContacts());
+	groupeservice.deleteContactGroupe(groupecontact,contact);
+	System.out.println(groupecontact.getContacts());
+	
+	//groupecontact.setName("famille");
+	//groupeservice.saveOrUpdateGroupeContact(groupecontact);
+   
    %>
    
 </body>

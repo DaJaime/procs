@@ -9,6 +9,7 @@ public class Contact {
 	private String lastName;
 	private String email;
 	Set <Phone> phones = new HashSet<Phone>();
+	Set <GroupeContact> groupeContact = new HashSet<GroupeContact>();
 	
 	public Contact() {
 	}
@@ -58,10 +59,67 @@ public class Contact {
 	public void setPhones(Set <Phone> phones) {
 		this.phones = phones;
 	}
+	
+	public Set <GroupeContact> getGroupeContact() {
+		return groupeContact;
+	}
+
+	public void setGroupeContact(Set <GroupeContact> groupeContact) {
+		this.groupeContact = groupeContact;
+	}
+
+
 
 	@Override
 	public String toString() {
-		return "Contact [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
+		return "Contact [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+				+ ", groupeContact=" + groupeContact + "]";
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + (int) (id ^ (id >>> 32));
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + ((phones == null) ? 0 : phones.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Contact other = (Contact) obj;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (id != other.id)
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (phones == null) {
+			if (other.phones != null)
+				return false;
+		} else if (!phones.equals(other.phones))
+			return false;
+		return true;
 	}
 	
 	
