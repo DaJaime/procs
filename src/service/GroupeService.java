@@ -2,14 +2,16 @@ package service;
 
 import dao.DAOContact;
 import dao.DAOGroupeContact;
+import dao.IDAOContact;
 import entities.Contact;
 import entities.GroupeContact;
+import entities.IContact;
 
 public class GroupeService 
 {
 	
 	DAOGroupeContact daoGroupe;
-	DAOContact daoContact;
+	IDAOContact daoContact;
 	
 	public GroupeService()
 	{
@@ -32,7 +34,7 @@ public class GroupeService
 		daoContact.saveOrUpdateContact(contact);	
 	}
 	
-	public void deleteContactGroupe(GroupeContact groupecontact, Contact contact)
+	public void deleteContactGroupe(GroupeContact groupecontact, IContact contact)
 	{		
 		groupecontact.getContacts().remove(contact);
 		contact.getGroupeContact().remove(groupecontact);

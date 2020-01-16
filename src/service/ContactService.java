@@ -1,30 +1,40 @@
 package service;
 
+import java.io.File;
 import java.util.List;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+
 import dao.DAOContact;
+import dao.IDAOContact;
 import entities.Contact;
+import entities.IContact;
 import entities.Phone;
 
 public class ContactService 
 {
-	DAOContact dao;
+	IDAOContact dao;
 	
 	public ContactService()
 	{
-		dao = new DAOContact();	
+		ApplicationContext appContext = new FileSystemXmlApplicationContext(
+				"file:/Users/damjai/Desktop/MIAGE/M2/S1/Procs/workspace/procs/WebContent/WEB-INF/applicationContext.xml");
+		dao = (IDAOContact)appContext.getBean("idDaoContact");
 	}
 	
-	public void saveOrUpdateContact(Contact contact){
+	public void saveOrUpdateContact(IContact contact){
 		dao.saveOrUpdateContact(contact);
 	}
 	
 	public void deleteContact(long id){
 		dao.deleteContact(id);
-	}
+}
 	
-	public Contact getContact(long id){
-		Contact c = dao.getContact(id);
+	public IContact getContact(long id){
+		IContact c = dao.getContact(id);
 		return c;
 	}
 	
@@ -46,7 +56,7 @@ public class ContactService
 	 **                 Phone                 ***
 	 ********************************************/
 	
-	public void addPhone(Contact contact, Phone phone) {
+	public void addPhone(IContact contact, Phone phone) {
 		phone.setContact(contact);
 		contact.getPhones().add(phone);
 		dao.saveOrUpdateContact(contact);

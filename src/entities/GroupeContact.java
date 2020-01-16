@@ -63,7 +63,7 @@ public class GroupeContact
 		this.contacts.add(c);
 	}
 	
-	public void deleteGroupeContact(Contact c)
+	public void deleteGroupeContact(IContact c)
 	{
 		this.contacts.remove(c);
 	}

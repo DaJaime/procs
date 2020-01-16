@@ -3,7 +3,7 @@ package entities;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Contact {
+public class Contact implements IContact {
 	private long id;
 	private String firstName;
 	private String lastName;
@@ -21,50 +21,62 @@ public class Contact {
 		this.email = email;
 	}
 
+	@Override
 	public long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(long id) {
 		this.id = id;
 	}
 
+	@Override
 	public String getFirstName() {
 		return firstName;
 	}
 
+	@Override
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
+	@Override
 	public String getLastName() {
 		return lastName;
 	}
 
+	@Override
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
+	@Override
 	public String getEmail() {
 		return email;
 	}
 
+	@Override
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
+	@Override
 	public Set <Phone> getPhones() {
 		return phones;
 	}
 
+	@Override
 	public void setPhones(Set <Phone> phones) {
 		this.phones = phones;
 	}
 	
+	@Override
 	public Set <GroupeContact> getGroupeContact() {
 		return groupeContact;
 	}
 
+	@Override
 	public void setGroupeContact(Set <GroupeContact> groupeContact) {
 		this.groupeContact = groupeContact;
 	}

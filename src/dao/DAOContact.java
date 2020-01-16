@@ -10,12 +10,14 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import entities.Contact;
+import entities.IContact;
 import entities.Phone;
 import util.HibernateUtil;
 
-public class DAOContact {
+public class DAOContact implements IDAOContact {
 
-	public void saveOrUpdateContact(Contact contact){
+	@Override
+	public void saveOrUpdateContact(IContact contact){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		System.out.println(contact);
@@ -23,22 +25,25 @@ public class DAOContact {
 		tx.commit();
 	}
 	
+	@Override
 	public void deleteContact(long id){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
-		Contact c = (Contact)session.get( Contact.class, id );
+		IContact c = (IContact)session.get( Contact.class, id );
 		session.delete(c);
 		tx.commit();
 	}
 	
-	public Contact getContact(long id) {
+	@Override
+	public IContact getContact(long id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Contact c = (Contact) session.get(Contact.class, id);
+		IContact c = (IContact) session.get(Contact.class, id);
 		session.close();
 		return c;
 	}
 	
 	// HQL : retourne une liste de contact filtre sur le firstName
+	@Override
 	public List<Contact> getListContactFilterFirstName(String firstName) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		StringBuffer requet = new StringBuffer();
@@ -55,6 +60,7 @@ public class DAOContact {
 	}
 	
 	// SQL : retourne une liste de contact filtre sur le lastName
+	@Override
 	public List getListContactFilterlastName(String lastName) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		StringBuffer requet = new StringBuffer();
@@ -71,6 +77,7 @@ public class DAOContact {
 	}
 	
 	// Criteria
+	@Override
 	public List getListContactFilterMail(String mail) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		List lst = (List) session.createCriteria(Contact.class).add(Restrictions.like("email", "la%")).list();
@@ -84,6 +91,7 @@ public class DAOContact {
 	 **                 Phone                 ***
 	 ********************************************/
 	
+	@Override
 	public void saveOrUpdatePhone(Phone phone){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
@@ -91,6 +99,7 @@ public class DAOContact {
 		tx.commit();
 	}
 	
+	@Override
 	public void deletePhone(long id){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
@@ -100,6 +109,7 @@ public class DAOContact {
 		tx.commit();
 	}
 	
+	@Override
 	public Phone getPhone(long id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Phone phone = (Phone) session.get(Phone.class, id);

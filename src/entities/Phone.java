@@ -4,7 +4,7 @@ public class Phone {
 	private long id;
 	private String number;
 	private String desc;
-	private Contact contact = null;
+	private IContact contact = null;
 	
 	public Phone(){
 	}
@@ -44,11 +44,11 @@ public class Phone {
 		this.desc = description;
 	}
 	
-	public Contact getContact() {
+	public IContact getContact() {
 		return contact;
 	}
 
-	public void setContact(Contact contact) {
+	public void setContact(IContact contact) {
 		this.contact = contact;
 	}
 
