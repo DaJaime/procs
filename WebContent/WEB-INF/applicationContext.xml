@@ -11,8 +11,7 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
         
-	<bean id="idDaoContact" class="dao.DAOContact">
-	</bean>
-	
+<bean id="idDaoContact" class="dao.DAOContact">
 
+</bean>
 </beans>

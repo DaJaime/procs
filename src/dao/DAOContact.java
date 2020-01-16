@@ -87,9 +87,9 @@ public class DAOContact implements IDAOContact {
 			return null;
 	}
 	
-	/********************************************
-	 **                 Phone                 ***
-	 ********************************************/
+	/* (non-Javadoc)
+	 * @see dao.IDAOContact#saveOrUpdatePhone(entities.Phone)
+	 */
 	
 	@Override
 	public void saveOrUpdatePhone(Phone phone){
