@@ -13,8 +13,12 @@ import entities.Contact;
 import entities.Phone;
 import util.HibernateUtil;
 
-public class DAOContact {
+public class DAOContact implements IDAOContact {
 
+	/* (non-Javadoc)
+	 * @see dao.IDAOContact#saveOrUpdateContact(entities.Contact)
+	 */
+	@Override
 	public void saveOrUpdateContact(Contact contact){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
@@ -23,6 +27,10 @@ public class DAOContact {
 		tx.commit();
 	}
 	
+	/* (non-Javadoc)
+	 * @see dao.IDAOContact#deleteContact(long)
+	 */
+	@Override
 	public void deleteContact(long id){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
@@ -31,6 +39,10 @@ public class DAOContact {
 		tx.commit();
 	}
 	
+	/* (non-Javadoc)
+	 * @see dao.IDAOContact#getContact(long)
+	 */
+	@Override
 	public Contact getContact(long id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Contact c = (Contact) session.get(Contact.class, id);
@@ -39,6 +51,10 @@ public class DAOContact {
 	}
 	
 	// HQL : retourne une liste de contact filtre sur le firstName
+	/* (non-Javadoc)
+	 * @see dao.IDAOContact#getListContactFilterFirstName(java.lang.String)
+	 */
+	@Override
 	public List<Contact> getListContactFilterFirstName(String firstName) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		StringBuffer requet = new StringBuffer();
@@ -55,6 +71,10 @@ public class DAOContact {
 	}
 	
 	// SQL : retourne une liste de contact filtre sur le lastName
+	/* (non-Javadoc)
+	 * @see dao.IDAOContact#getListContactFilterlastName(java.lang.String)
+	 */
+	@Override
 	public List getListContactFilterlastName(String lastName) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		StringBuffer requet = new StringBuffer();
@@ -71,6 +91,10 @@ public class DAOContact {
 	}
 	
 	// Criteria
+	/* (non-Javadoc)
+	 * @see dao.IDAOContact#getListContactFilterMail(java.lang.String)
+	 */
+	@Override
 	public List getListContactFilterMail(String mail) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		List lst = (List) session.createCriteria(Contact.class).add(Restrictions.like("email", "la%")).list();
@@ -80,10 +104,11 @@ public class DAOContact {
 			return null;
 	}
 	
-	/********************************************
-	 **                 Phone                 ***
-	 ********************************************/
+	/* (non-Javadoc)
+	 * @see dao.IDAOContact#saveOrUpdatePhone(entities.Phone)
+	 */
 	
+	@Override
 	public void saveOrUpdatePhone(Phone phone){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
@@ -91,6 +116,10 @@ public class DAOContact {
 		tx.commit();
 	}
 	
+	/* (non-Javadoc)
+	 * @see dao.IDAOContact#deletePhone(long)
+	 */
+	@Override
 	public void deletePhone(long id){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
@@ -100,6 +129,10 @@ public class DAOContact {
 		tx.commit();
 	}
 	
+	/* (non-Javadoc)
+	 * @see dao.IDAOContact#getPhone(long)
+	 */
+	@Override
 	public Phone getPhone(long id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Phone phone = (Phone) session.get(Phone.class, id);

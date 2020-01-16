@@ -4,14 +4,24 @@
   <welcome-file-list>
     <welcome-file>pages/index.jsp</welcome-file>
   </welcome-file-list>
+  <listener>
+    <listener-class>
+			org.springframework.web.context.ContextLoaderListener
+		</listener-class>
+  </listener>
+  <listener>
+    <listener-class>
+			org.springframework.web.context.request.RequestContextListener
+		</listener-class>
+  </listener>
   <servlet>
     <description></description>
-    <display-name>ServletShowListContact</display-name>
-    <servlet-name>ServletShowListContact</servlet-name>
-    <servlet-class>servlet.ServletShowListContact</servlet-class>
+    <display-name>HelloServlet</display-name>
+    <servlet-name>HelloServlet</servlet-name>
+    <servlet-class>servlet.HelloServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ServletShowListContact</servlet-name>
-    <url-pattern>/ServletShowListContact</url-pattern>
+    <servlet-name>HelloServlet</servlet-name>
+    <url-pattern>/HelloServlet</url-pattern>
   </servlet-mapping>
 </web-app>

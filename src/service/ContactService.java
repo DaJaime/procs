@@ -2,17 +2,25 @@ package service;
 
 import java.util.List;
 
+import javax.naming.Context;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
 import dao.DAOContact;
+import dao.IDAOContact;
 import entities.Contact;
 import entities.Phone;
 
 public class ContactService 
 {
-	DAOContact dao;
+	IDAOContact dao;
 	
 	public ContactService()
 	{
-		dao = new DAOContact();	
+		dao = new DAOContact();
+		ApplicationContext appContext = new FileSystemXmlApplicationContext("File:/Users/haseeb/Documents/procs/WebContent/WEB-INF/applicationContext.xml");
+		IDAOContact idaocontact=(IDAOContact)appContext.getBean("idDaoContact");
 	}
 	
 	public void saveOrUpdateContact(Contact contact){

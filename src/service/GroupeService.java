@@ -2,6 +2,7 @@ package service;
 
 import dao.DAOContact;
 import dao.DAOGroupeContact;
+import dao.IDAOContact;
 import entities.Contact;
 import entities.GroupeContact;
 
@@ -9,7 +10,7 @@ public class GroupeService
 {
 	
 	DAOGroupeContact daoGroupe;
-	DAOContact daoContact;
+	IDAOContact daoContact;
 	
 	public GroupeService()
 	{
