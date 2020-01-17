@@ -39,6 +39,7 @@ import = "java.util.List"
 	service.getContact(c.getId());
 	System.out.println("------2----");
 	service.getContact(c.getId());
+	service.deleteContact(c.getId());
 	/* Phone p = new Phone("0101010110", "Mobile");
 	service.addPhone(c, p);
 	c.setFirstName("Dada");

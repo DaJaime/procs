@@ -22,10 +22,10 @@ public class GroupeService
 	
 	public void saveOrUpdateGroupeContact(GroupeContact groupecontact)
 	{
-		
 		daoGroupe.saveOrUpdateGroupeContact(groupecontact);
 	}
 	
+	//permet d'ajouter un contact dans un groupe
 	public void addContactGroupe(GroupeContact groupecontact, Contact contact) 
 	{
 		groupecontact.getContacts().add(contact);
@@ -34,6 +34,7 @@ public class GroupeService
 		daoContact.saveOrUpdateContact(contact);	
 	}
 	
+	//permet de supprimer un contact d'un groupe
 	public void deleteContactGroupe(GroupeContact groupecontact, IContact contact)
 	{		
 		groupecontact.getContacts().remove(contact);

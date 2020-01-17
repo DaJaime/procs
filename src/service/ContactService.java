@@ -16,12 +16,14 @@ import entities.Phone;
 
 public class ContactService 
 {
+	private static final String ha = "file:/Users/haseeb/Documents/procs/WebContent/WEB-INF/applicationContext.xml";
+	private static final String da = "";
+	
 	IDAOContact dao;
 	
 	public ContactService()
 	{
-		ApplicationContext appContext = new FileSystemXmlApplicationContext(
-				"file:/Users/damjai/Desktop/MIAGE/M2/S1/Procs/workspace/procs/WebContent/WEB-INF/applicationContext.xml");
+		ApplicationContext appContext = new FileSystemXmlApplicationContext(ha);
 		dao = (IDAOContact)appContext.getBean("idDaoContact");
 	}
 	

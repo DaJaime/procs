@@ -10,8 +10,21 @@
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
-        
-<bean id="idDaoContact" class="dao.DAOContact">
+    
+	<aop:config>
+		<aop:aspect id="contactAddLoggerBean" ref="idContactLogger"> 
+		<aop:before pointcut="execution(* saveOrUpdateContact(entities.IContact)) and args(contact)" method="beforeLog" arg-names="contact"/> 
+		</aop:aspect>
+	</aop:config>
+	<bean id="idContactLogger" class="aspect.AspectContact"/>
+	
+	<aop:config>
+		<aop:aspect id="contactDeleteLoggerBean" ref="idDeleteContact"> 
+			<aop:around pointcut="execution(* deleteContact(long)) and args(id)" method="aroundLog" arg-names="pjp, id"/>
+		</aop:aspect>
+	</aop:config>
+	<bean id="idDeleteContact" class="aspect.AspectContact"/>
+	
+	<bean id="idDaoContact" class="dao.DAOContact"></bean>
 
-</bean>
 </beans>
