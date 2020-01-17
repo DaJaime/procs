@@ -4,16 +4,20 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 import dao.IDAOContact;
+import entities.Contact;
 import entities.IContact;
 import entities.IGroupeContact;
 import entities.IPhone;
 import service.GroupeService;
 
-public class InitDataBase {
+public class InitDataBase 
+{
+	private static final String ha = "file:/Users/haseeb/Documents/procs/WebContent/WEB-INF/applicationContext.xml";
+	private static final String da = "file:/Users/damjai/Desktop/MIAGE/M2/S1/Procs/workspace/procs/WebContent/WEB-INF/applicationContext.xml";
 
-	public void init() {
-		ApplicationContext appContext = new FileSystemXmlApplicationContext(
-				"file:/Users/damjai/Desktop/MIAGE/M2/S1/Procs/workspace/procs/WebContent/WEB-INF/applicationContext.xml");
+	public void init() 
+	{
+		ApplicationContext appContext = new FileSystemXmlApplicationContext(ha);
 		IDAOContact dao = (IDAOContact)appContext.getBean("idDaoContact");
 		
 		IContact damien = (IContact)appContext.getBean("idContactDamien");
@@ -21,6 +25,11 @@ public class InitDataBase {
 		IContact haseeb = (IContact)appContext.getBean("idContactHaseeb");
 		IPhone haseebPhone1 = (IPhone)appContext.getBean("idPhoneDamien");
 		IPhone haseebPhone2 = (IPhone)appContext.getBean("idPhoneDamien");
+		
+		System.out.println("----------Test AROUND AOP------------------");
+		IContact caop = new Contact("anthony", "nascimento", "antho@gmail.com");
+		dao.saveOrUpdateContact(caop);
+		dao.deleteContact(caop.getId());
 		
 		dao.saveOrUpdateContact(damien);
 		dao.saveOrUpdatePhone(damienPhone);
@@ -46,5 +55,6 @@ public class InitDataBase {
 		dao.saveOrUpdateContact(damien);
 		damien.setFirstName("Dam");
 		dao.saveOrUpdateContact(damien);
+		
 	}
 }

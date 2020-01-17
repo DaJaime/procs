@@ -14,14 +14,14 @@ public class AspectContact
 	
 	public void aroundLog(ProceedingJoinPoint pjp, long id) throws Throwable
 	{
-		if(id < 3)
+		if(id != 1)
 		{
-			System.out.println("je retourne à mon habitude. (AOP around)");
+			System.out.println("je supprime l'id: "+id+" (AOP around)");
 			pjp.proceed();	
 		}
 		else
 		{
-			System.out.println("je contourne. (AOP around)");
+			System.out.println("je supprime pas l'id: "+id+" (AOP around)");
 		}
 	}
 	

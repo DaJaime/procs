@@ -19,7 +19,7 @@ import entities.Phone;
 public class ContactService 
 {
 	private static final String ha = "file:/Users/haseeb/Documents/procs/WebContent/WEB-INF/applicationContext.xml";
-	private static final String da = "";
+	private static final String da = "file:/Users/damjai/Desktop/MIAGE/M2/S1/Procs/workspace/procs/WebContent/WEB-INF/applicationContext.xml";
 	
 	IDAOContact dao;
 	
