@@ -14,7 +14,7 @@ import = "java.util.List"
   <title>Contact app</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="pages/css/style.css">
+<link rel="stylesheet" href="css/styleIndex.css">
 
 </head>
 <body>
@@ -23,27 +23,15 @@ import = "java.util.List"
 
 <nav>
   <ul>
-    <li><a href="pages/showListContact.jsp">Afficher les contacts</a></li>
+    <li><a href="showListContact.jsp">Afficher les contacts</a></li>
     <li><a href="">Afficher les groupes</a></li>
-    <li><a href="">Work</a></li>
+    <li><a href="initDataBase.jsp">Peupler la base</a></li>
     <li><a href="">Contact</a></li>
   </ul>
 </nav>
 
 <%
 	//mes services
-	ContactService service = new ContactService();
-	Contact c = new Contact ("Damien", "Jaime", "lalala@gmail.com");
-	service.saveOrUpdateContact(c);
-	System.out.println("------1----");
-	service.getContact(c.getId());
-	System.out.println("------2----");
-	service.getContact(c.getId());
-	service.deleteContact(c.getId());
-	/* Phone p = new Phone("0101010110", "Mobile");
-	service.addPhone(c, p);
-	c.setFirstName("Dada");
-	service.saveOrUpdateContact(c); */
    %>
    
 <!-- partial -->

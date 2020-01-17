@@ -11,6 +11,7 @@ import org.hibernate.criterion.Restrictions;
 
 import entities.Contact;
 import entities.IContact;
+import entities.IPhone;
 import entities.Phone;
 import util.HibernateUtil;
 
@@ -92,7 +93,7 @@ public class DAOContact implements IDAOContact {
 	 */
 	
 	@Override
-	public void saveOrUpdatePhone(Phone phone){
+	public void saveOrUpdatePhone(IPhone phone){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		session.saveOrUpdate(phone);
@@ -104,15 +105,15 @@ public class DAOContact implements IDAOContact {
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
 		
-		Phone phone = (Phone)session.get( Phone.class, id );
+		IPhone phone = (IPhone)session.get( Phone.class, id );
 		session.delete(phone);
 		tx.commit();
 	}
 	
 	@Override
-	public Phone getPhone(long id) {
+	public IPhone getPhone(long id) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
-		Phone phone = (Phone) session.get(Phone.class, id);
+		IPhone phone = (IPhone) session.get(Phone.class, id);
 		session.close();
 		return phone;
 	}

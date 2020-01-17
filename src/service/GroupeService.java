@@ -6,6 +6,7 @@ import dao.IDAOContact;
 import entities.Contact;
 import entities.GroupeContact;
 import entities.IContact;
+import entities.IGroupeContact;
 
 public class GroupeService 
 {
@@ -20,7 +21,7 @@ public class GroupeService
 		
 	}
 	
-	public void saveOrUpdateGroupeContact(GroupeContact groupecontact)
+	public void saveOrUpdateGroupeContact(IGroupeContact groupecontact)
 	{
 		daoGroupe.saveOrUpdateGroupeContact(groupecontact);
 	}
@@ -35,7 +36,7 @@ public class GroupeService
 	}
 	
 	//permet de supprimer un contact d'un groupe
-	public void deleteContactGroupe(GroupeContact groupecontact, IContact contact)
+	public void deleteContactGroupe(IGroupeContact groupecontact, IContact contact)
 	{		
 		groupecontact.getContacts().remove(contact);
 		contact.getGroupeContact().remove(groupecontact);

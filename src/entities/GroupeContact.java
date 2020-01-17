@@ -3,7 +3,7 @@ package entities;
 import java.util.HashSet;
 import java.util.Set;
 
-public class GroupeContact 
+public class GroupeContact implements IGroupeContact 
 {
 	private long id;
 	private String name;
@@ -22,47 +22,57 @@ public class GroupeContact
 		contacts = new HashSet<Contact>();
 	}
 	
+	@Override
 	public long getId()
 	{
 		return this.id;
 	}
 	
+	@Override
 	public void setId(long id) {
 		this.id = id;
 	}
 	
 	
+	@Override
 	public String getDescription()
 	{
 		return this.description;
 	}
 
+	@Override
 	public String getName() {
 		return name;
 	}
 
+	@Override
 	public void setName(String name) {
 		this.name = name;
 	}
 
+	@Override
 	public Set<Contact> getContacts() {
 		return contacts;
 	}
 
+	@Override
 	public void setContacts(Set<Contact> contacts) {
 		this.contacts = contacts;
 	}
 
+	@Override
 	public void setDescription(String value)
 	{
 		this.description = value;
 	}
 
+	@Override
 	public void addGroupeContact(Contact c)
 	{
 		this.contacts.add(c);
 	}
 	
+	@Override
 	public void deleteGroupeContact(IContact c)
 	{
 		this.contacts.remove(c);

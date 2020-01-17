@@ -12,6 +12,8 @@ import dao.DAOContact;
 import dao.IDAOContact;
 import entities.Contact;
 import entities.IContact;
+import entities.IGroupeContact;
+import entities.IPhone;
 import entities.Phone;
 
 public class ContactService 
@@ -65,7 +67,7 @@ public class ContactService
 		dao.saveOrUpdatePhone(phone);
 	}
 	
-	public void saveOrUpdatePhone(Phone phone){
+	public void saveOrUpdatePhone(IPhone phone){
 		dao.saveOrUpdatePhone(phone);
 	}
 	
@@ -73,8 +75,8 @@ public class ContactService
 		dao.deletePhone(id);
 	}
 	
-	public Phone getPhone(long id) {
-		Phone p = dao.getPhone(id);
+	public IPhone getPhone(long id) {
+		IPhone p = dao.getPhone(id);
 		return p;
 	}
 	
