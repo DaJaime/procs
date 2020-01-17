@@ -5,11 +5,12 @@ import org.hibernate.Transaction;
 
 import entities.Contact;
 import entities.GroupeContact;
+import entities.IGroupeContact;
 import util.HibernateUtil;
 
 public class DAOGroupeContact 
 {
-	public void saveOrUpdateGroupeContact(GroupeContact groupecontact)
+	public void saveOrUpdateGroupeContact(IGroupeContact groupecontact)
 	{
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
@@ -20,7 +21,7 @@ public class DAOGroupeContact
 	public void deleteGroupe(long id){
 		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction tx = session.beginTransaction();
-		GroupeContact gc = (GroupeContact)session.get( GroupeContact.class, id );
+		IGroupeContact gc = (IGroupeContact)session.get( GroupeContact.class, id );
 		session.delete(gc);
 		tx.commit();
 	}

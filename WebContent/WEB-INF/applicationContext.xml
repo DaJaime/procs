@@ -11,7 +11,74 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
         
-<bean id="idDaoContact" class="dao.DAOContact">
+<bean id="idDaoContact" class="dao.DAOContact"></bean>
 
+<bean id="idContactDamien" class="entities.Contact">
+	<property name="firstName" value="Damien"/>
+	<property name="lastName" value="Jaime"/>
+	<property name="email" value="damien.jaime@mail.fr"/>
+	<property name="phones"> <ref bean="idPhoneDamien"/></property>
 </bean>
+
+<bean id="idPhoneDamien" class="entities.Phone">
+	<property name="number" value="0633731220"/>
+	<property name="desc" value="Mobile"/>
+	<property name="contact"> <ref bean="idContactDamien"/></property>
+</bean>
+
+<bean id="idContactHaseeb" class="entities.Contact">
+	<property name="firstName" value="Haseeb"/>
+	<property name="lastName" value="Chaudhry"/>
+	<property name="email" value="haseeb.chaudhry@mail.fr"/>
+	<property name="phones">
+		<list>
+			<ref bean="idPhoneHaseeb1"/>
+			<ref bean="idPhoneHaseeb2"/>
+		</list>
+	</property>
+</bean>
+
+<bean id="idPhoneHaseeb1" class="entities.Phone">
+	<property name="number" value="0601937524"/>
+	<property name="desc" value="Mobile"/>
+	<property name="contact"> <ref bean="idContactHaseeb"/></property>
+</bean>
+
+<bean id="idPhoneHaseeb2" class="entities.Phone">
+	<property name="number" value="02592334799"/>
+	<property name="desc" value="Fix"/>
+	<property name="contact"> <ref bean="idContactHaseeb"/></property>
+</bean>
+
+<bean id="idGroupeMiageCll" class="entities.GroupeContact">
+	<property name="name" value="MIAGE_CLL"/>
+	<property name="description" value="Étudiant en MIAGE classique"/>
+	<property name="contacts">
+			<ref bean="idContactDamien"/>
+	</property>
+</bean>
+
+<bean id="idGroupeMiageApp" class="entities.GroupeContact">
+	<property name="name" value="MIAGE_APP"/>
+	<property name="description" value="Étudiant en MIAGE apprentissage"/>
+	<property name="contacts">
+			<ref bean="idContactHaseeb"/>
+	</property>
+</bean>
+
+<bean id="idEntrepriseParisNanterre" class="entities.Entreprise">
+	<constructor-arg type="String"><value>Paris-Nanterre</value></constructor-arg>
+	<constructor-arg type="String"><value>Siège social</value></constructor-arg>
+	<constructor-arg type="String"><value>siege@parisnanterre.fr</value></constructor-arg>
+	<constructor-arg type="String"><value>9200092</value></constructor-arg>
+	<property name="phones"> <ref bean="idPhoneParisNanterre"/></property>
+</bean>
+
+<bean id="idPhoneParisNanterre" class="entities.Phone">
+	<property name="number" value="0238571189"/>
+	<property name="desc" value="Accueil"/>
+	<property name="contact"> <ref bean="idEntrepriseParisNanterre"/></property>
+</bean>
+
+
 </beans>

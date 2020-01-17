@@ -4,7 +4,7 @@ import java.util.List;
 
 import entities.Contact;
 import entities.IContact;
-import entities.Phone;
+import entities.IPhone;
 
 public interface IDAOContact {
 
@@ -27,10 +27,10 @@ public interface IDAOContact {
 	 **                 Phone                 ***
 	 ********************************************/
 
-	void saveOrUpdatePhone(Phone phone);
+	void saveOrUpdatePhone(IPhone phone);
 
 	void deletePhone(long id);
 
-	Phone getPhone(long id);
+	IPhone getPhone(long id);
 
 }

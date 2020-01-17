@@ -1,6 +1,6 @@
 package entities;
 
-public class Phone {
+public class Phone implements IPhone {
 	private long id;
 	private String number;
 	private String desc;
@@ -15,39 +15,47 @@ public class Phone {
 		this.desc = description;
 	}
 	
+	@Override
 	public long getId()
 	{
 		return this.id;
 	}
 	
+	@Override
 	public void setId(long id) {
 		this.id = id;
 	}
 	
+	@Override
 	public String getNumber()
 	{
 		return this.number;
 	}
 	
+	@Override
 	public String getDesc()
 	{
 		return this.desc;
 	}
 	
+	@Override
 	public void setNumber(String numero)
 	{
 		this.number = numero;
 	}
 	
+	@Override
 	public void setDesc(String description)
 	{
 		this.desc = description;
 	}
 	
+	@Override
 	public IContact getContact() {
 		return contact;
 	}
 
+	@Override
 	public void setContact(IContact contact) {
 		this.contact = contact;
 	}
