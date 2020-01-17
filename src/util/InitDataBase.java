@@ -17,20 +17,21 @@ public class InitDataBase
 
 	public void init() 
 	{
-		ApplicationContext appContext = new FileSystemXmlApplicationContext(ha);
+		ApplicationContext appContext = new FileSystemXmlApplicationContext(da);
 		IDAOContact dao = (IDAOContact)appContext.getBean("idDaoContact");
-		
-		IContact damien = (IContact)appContext.getBean("idContactDamien");
-		IPhone damienPhone = (IPhone)appContext.getBean("idPhoneDamien");
-		IContact haseeb = (IContact)appContext.getBean("idContactHaseeb");
-		IPhone haseebPhone1 = (IPhone)appContext.getBean("idPhoneDamien");
-		IPhone haseebPhone2 = (IPhone)appContext.getBean("idPhoneDamien");
 		
 		System.out.println("----------Test AROUND AOP------------------");
 		IContact caop = new Contact("anthony", "nascimento", "antho@gmail.com");
 		dao.saveOrUpdateContact(caop);
 		dao.deleteContact(caop.getId());
 		
+		System.out.println("----------Peuplement data base------------------");
+		
+		IContact damien = (IContact)appContext.getBean("idContactDamien");
+		IPhone damienPhone = (IPhone)appContext.getBean("idPhoneDamien");
+		IContact haseeb = (IContact)appContext.getBean("idContactHaseeb");
+		IPhone haseebPhone1 = (IPhone)appContext.getBean("idPhoneDamien");
+		IPhone haseebPhone2 = (IPhone)appContext.getBean("idPhoneDamien");		
 		dao.saveOrUpdateContact(damien);
 		dao.saveOrUpdatePhone(damienPhone);
 		dao.saveOrUpdateContact(haseeb);
@@ -55,6 +56,10 @@ public class InitDataBase
 		dao.saveOrUpdateContact(damien);
 		damien.setFirstName("Dam");
 		dao.saveOrUpdateContact(damien);
+		
+		System.out.println("----------Test Cache------------------");
+		IContact c = (Contact) dao.getContact(1);
+		System.out.println(c.getFirstName());
 		
 	}
 }

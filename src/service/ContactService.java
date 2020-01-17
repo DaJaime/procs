@@ -25,7 +25,7 @@ public class ContactService
 	
 	public ContactService()
 	{
-		ApplicationContext appContext = new FileSystemXmlApplicationContext(ha);
+		ApplicationContext appContext = new FileSystemXmlApplicationContext(da);
 		dao = (IDAOContact)appContext.getBean("idDaoContact");
 	}
 	
