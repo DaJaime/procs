@@ -50,12 +50,12 @@ public class InitDataBase
 		dao.saveOrUpdatePhone(parisNanterrePhone);
 		
 		// Modif contact for test version
-		damien.setFirstName("Modif1");
-		dao.saveOrUpdateContact(damien);
-		damien.setFirstName("Modif2");
-		dao.saveOrUpdateContact(damien);
-		damien.setFirstName("Dam");
-		dao.saveOrUpdateContact(damien);
+		//damien.setFirstName("Modif1");
+		//dao.saveOrUpdateContact(damien);
+		//damien.setFirstName("Modif2");
+		//dao.saveOrUpdateContact(damien);
+		//damien.setFirstName("Dam");
+		//dao.saveOrUpdateContact(damien);
 		
 		System.out.println("----------Test Cache------------------");
 		IContact c = (Contact) dao.getContact(1);

@@ -20,25 +20,35 @@
     <servlet-name>HelloServlet</servlet-name>
     <servlet-class>servlet.HelloServlet</servlet-class>
   </servlet>
-  
-  <!-- 2) the second way is to use the lines below. Here you don't give explicitly the file name but it is supposed to be 
-    named applicationContext.xml -->
-    <listener>
-		<listener-class>
+  <listener>
+    <listener-class>
 			org.springframework.web.context.ContextLoaderListener
 		</listener-class>
-	</listener>
-	
-	<!-- In the above declations the beans will be scoped in the servlet context, using the 
-	listner given bellow your beans can request-scoped or session-scoped -->
-	<listener>
-		<listener-class>
+  </listener>
+  <listener>
+    <listener-class>
 			org.springframework.web.context.request.RequestContextListener
 		</listener-class>
-	</listener>
-  
+  </listener>
   <servlet-mapping>
     <servlet-name>HelloServlet</servlet-name>
     <url-pattern>/HelloServlet</url-pattern>
   </servlet-mapping>
+  
+  <!-- For REST API -->
+<servlet>
+  <servlet-name>Jersey REST Service</servlet-name>
+<servlet-class>
+  com.sun.jersey.spi.container.servlet.ServletContainer
+</servlet-class>
+  <init-param>
+    <param-name>com.sun.jersey.config.property.packages</param-name>
+    <param-value>restService</param-value>
+  </init-param>
+  <load-on-startup>1</load-on-startup>
+</servlet>
+<servlet-mapping>
+  <servlet-name>Jersey REST Service</servlet-name>
+  <url-pattern>/api/*</url-pattern>
+</servlet-mapping>
 </web-app>
