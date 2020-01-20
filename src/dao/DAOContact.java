@@ -5,6 +5,7 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -16,42 +17,46 @@ import entities.Phone;
 import util.HibernateUtil;
 
 public class DAOContact implements IDAOContact {
+	
+	private SessionFactory sessionFactory;
+	
+	public DAOContact(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
+
+	public SessionFactory getSessionFactory() {
+		return sessionFactory;
+	}
+
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	@Override
 	public void saveOrUpdateContact(IContact contact){
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		System.out.println(contact);
-		session.saveOrUpdate(contact);
-		tx.commit();
+		sessionFactory.getCurrentSession().saveOrUpdate(contact);
 	}
 	
 	@Override
 	public void deleteContact(long id){
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		IContact c = (IContact)session.get( Contact.class, id );
-		session.delete(c);
-		tx.commit();
+		IContact c = (IContact)sessionFactory.getCurrentSession().get( Contact.class, id );
+		sessionFactory.getCurrentSession().delete(c);
 	}
 	
 	@Override
 	public IContact getContact(long id) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		IContact c = (IContact) session.get(Contact.class, id);
-		session.close();
+		IContact c = (IContact) sessionFactory.getCurrentSession().get(Contact.class, id);
 		return c;
 	}
 	
 	// HQL : retourne une liste de contact filtre sur le firstName
 	@Override
 	public List<Contact> getListContactFilterFirstName(String firstName) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
 		StringBuffer requet = new StringBuffer();
 		requet.append("select contact from Contact as contact where contact.firstName like '");
 		requet.append(firstName);
 		requet.append("%'");
-		Query requete = session.createQuery(requet.toString());
+		Query requete = sessionFactory.getCurrentSession().createQuery(requet.toString());
 		List<Contact> resultats = requete.list();
 		
 		if(!resultats.isEmpty())
@@ -63,12 +68,11 @@ public class DAOContact implements IDAOContact {
 	// SQL : retourne une liste de contact filtre sur le lastName
 	@Override
 	public List getListContactFilterlastName(String lastName) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
 		StringBuffer requet = new StringBuffer();
 		requet.append("select ID_CONTACT from Contact where LASTNAME like '");
 		requet.append(lastName);
 		requet.append("%'");
-		SQLQuery query = session.createSQLQuery(requet.toString());
+		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(requet.toString());
 		List lst = query.list();
 		
 		if(!lst.isEmpty())
@@ -80,8 +84,7 @@ public class DAOContact implements IDAOContact {
 	// Criteria
 	@Override
 	public List getListContactFilterMail(String mail) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		List lst = (List) session.createCriteria(Contact.class).add(Restrictions.like("email", "la%")).list();
+		List lst = (List) sessionFactory.getCurrentSession().createCriteria(Contact.class).add(Restrictions.like("email", "la%")).list();
 		if(!lst.isEmpty())
 			return lst;
 		else
@@ -94,27 +97,18 @@ public class DAOContact implements IDAOContact {
 	
 	@Override
 	public void saveOrUpdatePhone(IPhone phone){
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		session.saveOrUpdate(phone);
-		tx.commit();
+		sessionFactory.getCurrentSession().saveOrUpdate(phone);
 	}
 	
 	@Override
 	public void deletePhone(long id){
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		Transaction tx = session.beginTransaction();
-		
-		IPhone phone = (IPhone)session.get( Phone.class, id );
-		session.delete(phone);
-		tx.commit();
+		IPhone phone = (IPhone)sessionFactory.getCurrentSession().get( Phone.class, id );
+		sessionFactory.getCurrentSession().delete(phone);
 	}
 	
 	@Override
 	public IPhone getPhone(long id) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		IPhone phone = (IPhone) session.get(Phone.class, id);
-		session.close();
+		IPhone phone = (IPhone) sessionFactory.getCurrentSession().get(Phone.class, id);
 		return phone;
 	}
 	

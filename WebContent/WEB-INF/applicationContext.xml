@@ -11,6 +11,7 @@
         http://www.springframework.org/schema/aop
         http://www.springframework.org/schema/aop/spring-aop.xsd">
     
+    <!-- AOP -->
 	<aop:config>
 		<aop:aspect id="contactAddLoggerBean" ref="idContactLogger"> 
 		<aop:before pointcut="execution(* saveOrUpdateContact(entities.IContact)) and args(contact)" method="beforeLog" arg-names="contact"/> 
@@ -25,7 +26,18 @@
 	</aop:config>
 	<bean id="idDeleteContact" class="aspect.AspectContact"/>
 	
-	<bean id="idDaoContact" class="dao.DAOContact"></bean>
+	<!-- Create class beans -->
+	<bean id="idDaoContact" class="dao.DAOContact">
+		<constructor-arg>
+			<ref bean="sessionFactory" />
+		</constructor-arg>
+	</bean>
+	
+	<bean id="idDaoGroupeContact" class="dao.DAOGroupeContact">
+		<constructor-arg>
+			<ref bean="sessionFactory" />
+		</constructor-arg>
+	</bean>
 
 <bean id="idContactDamien" class="entities.Contact">
 	<property name="firstName" value="Damien"/>
@@ -93,6 +105,40 @@
 	<property name="desc" value="Accueil"/>
 	<property name="contact"> <ref bean="idEntrepriseParisNanterre"/></property>
 </bean>
+
+<!-- Couplage Spring Hibernate-->
+<bean id="dataSource"
+class="org.springframework.jdbc.datasource.DriverManagerDataSource"
+destroy-method="getCatalog">
+	<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+	<property name="url" value="jdbc:mysql://localhost/procs?serverTimezone=UTC" />
+	<property name="username" value="root" />
+	<property name="password" value="azertyui" />
+</bean>
+
+<bean id="sessionFactory"
+class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+	<property name="dataSource" ref="dataSource" />
+	<property name="configLocation" value="classpath:hibernate.cfg.xml" />
+</bean>
+
+<bean id="transactionManager"
+class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+<property name="sessionFactory" ref="sessionFactory" />
+</bean>
+
+<!-- important: lignes standards, pensez juste à pointer le bon repertoire de vos DAO dans execution(* domain.*.*(..))-->
+<aop:config>
+<aop:advisor pointcut="execution(* dao.*.*(..))" advice-ref="txAdvice"/>
+</aop:config> 
+<!-- important: lignes standards-->
+<tx:advice id="txAdvice" transaction-manager="transactionManager">
+<tx:attributes>
+<tx:method name="get*" read-only="true" />
+
+<tx:method name="*"/>
+</tx:attributes>
+</tx:advice>
 
 
 </beans>
