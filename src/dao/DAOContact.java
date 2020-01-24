@@ -11,7 +11,9 @@ import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import entities.Contact;
+import entities.GroupeContact;
 import entities.IContact;
+import entities.IGroupeContact;
 import entities.IPhone;
 import entities.Phone;
 import util.HibernateUtil;
@@ -94,7 +96,7 @@ public class DAOContact implements IDAOContact {
 	/* (non-Javadoc)
 	 * @see dao.IDAOContact#saveOrUpdatePhone(entities.Phone)
 	 */
-	
+	/*------------------Phones-----------------*/
 	@Override
 	public void saveOrUpdatePhone(IPhone phone){
 		sessionFactory.getCurrentSession().saveOrUpdate(phone);
@@ -110,6 +112,20 @@ public class DAOContact implements IDAOContact {
 	public IPhone getPhone(long id) {
 		IPhone phone = (IPhone) sessionFactory.getCurrentSession().get(Phone.class, id);
 		return phone;
+	}
+	
+	/*------------------Groupes-----------------*/
+	
+	@Override
+	public void saveOrUpdateGroupeContact(IGroupeContact groupecontact)
+	{
+		sessionFactory.getCurrentSession().saveOrUpdate(groupecontact);
+	}
+	
+	@Override
+	public void deleteGroupe(long id){
+		IGroupeContact gc = (IGroupeContact)sessionFactory.getCurrentSession().get( GroupeContact.class, id );
+		sessionFactory.getCurrentSession().delete(gc);
 	}
 	
 }

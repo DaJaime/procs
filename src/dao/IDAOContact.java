@@ -4,6 +4,7 @@ import java.util.List;
 
 import entities.Contact;
 import entities.IContact;
+import entities.IGroupeContact;
 import entities.IPhone;
 
 public interface IDAOContact {
@@ -32,5 +33,9 @@ public interface IDAOContact {
 	void deletePhone(long id);
 
 	IPhone getPhone(long id);
+
+	void saveOrUpdateGroupeContact(IGroupeContact groupecontact);
+
+	void deleteGroupe(long id);
 
 }

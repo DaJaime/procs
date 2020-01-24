@@ -32,12 +32,6 @@
 			<ref bean="sessionFactory" />
 		</constructor-arg>
 	</bean>
-	
-	<bean id="idDaoGroupeContact" class="dao.DAOGroupeContact">
-		<constructor-arg>
-			<ref bean="sessionFactory" />
-		</constructor-arg>
-	</bean>
 
 <bean id="idContactDamien" class="entities.Contact">
 	<property name="firstName" value="Damien"/>
