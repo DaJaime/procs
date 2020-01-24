@@ -6,16 +6,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.ContactService;
+
 /**
  * Servlet implementation class HelloServlet
  */
-public class HelloServlet extends HttpServlet {
+public class CreateContact extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public HelloServlet() {
+    public CreateContact() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -25,18 +27,24 @@ public class HelloServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String name = request.getParameter("username");
-	    String pass = request.getParameter("password");
-	    System.out.println(name);
-	    System.out.println(pass);
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		String nom = request.getParameter("nom");
+		String prenom = request.getParameter("prenom");
+		String mail = request.getParameter("mail");
+		String phone = request.getParameter("phone");
+		String descphone = request.getParameter("descphone");
+		String groupe = request.getParameter("groupe");
+		String descgroupe = request.getParameter("descgroupe");
+		
+		System.out.println(nom + prenom + mail + phone + descphone + groupe + descgroupe );
+		    
 	}
 
 }

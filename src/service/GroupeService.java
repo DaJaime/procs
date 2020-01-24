@@ -22,7 +22,7 @@ public class GroupeService
 	
 	public GroupeService()
 	{
-		ApplicationContext appContext = new FileSystemXmlApplicationContext(da);
+		ApplicationContext appContext = new FileSystemXmlApplicationContext(ha);
 		daoGroupe = (IDAOGroupeContact)appContext.getBean("idDaoGroupeContact");
 		daoContact = (IDAOContact)appContext.getBean("idDaoContact");
 		

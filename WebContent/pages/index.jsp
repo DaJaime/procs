@@ -23,7 +23,7 @@ import = "java.util.List"
 
 <nav>
   <ul>
-    <li><a href="showListContact.jsp">Afficher les contacts</a></li>
+    <li><a href="createContact.jsp">Afficher les contacts</a></li>
     <li><a href="">Afficher les groupes</a></li>
     <li><a href="initDataBase.jsp">Peupler la base</a></li>
     <li><a href="">Contact</a></li>

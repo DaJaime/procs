@@ -17,7 +17,7 @@ public class InitDataBase
 
 	public void init() 
 	{
-		ApplicationContext appContext = new FileSystemXmlApplicationContext(da);
+		ApplicationContext appContext = new FileSystemXmlApplicationContext(ha);
 		IDAOContact dao = (IDAOContact)appContext.getBean("idDaoContact");
 		
 		System.out.println("----------Test AROUND AOP------------------");
@@ -38,24 +38,26 @@ public class InitDataBase
 		dao.saveOrUpdatePhone(haseebPhone1);
 		dao.saveOrUpdatePhone(haseebPhone2);
 		
-		IGroupeContact groupeMiageCll = (IGroupeContact)appContext.getBean("idGroupeMiageCll");
-		IGroupeContact groupeMiageApp = (IGroupeContact)appContext.getBean("idGroupeMiageApp");
-		GroupeService gs = new GroupeService();
-		gs.saveOrUpdateGroupeContact(groupeMiageCll);
-		gs.saveOrUpdateGroupeContact(groupeMiageApp);
-		
 		IContact parisNanterre = (IContact)appContext.getBean("idEntrepriseParisNanterre");
 		IPhone parisNanterrePhone = (IPhone)appContext.getBean("idPhoneParisNanterre");
 		dao.saveOrUpdateContact(parisNanterre);
 		dao.saveOrUpdatePhone(parisNanterrePhone);
 		
 		// Modif contact for test version
-		//damien.setFirstName("Modif1");
-		//dao.saveOrUpdateContact(damien);
-		//damien.setFirstName("Modif2");
-		//dao.saveOrUpdateContact(damien);
-		//damien.setFirstName("Dam");
-		//dao.saveOrUpdateContact(damien);
+		damien.setFirstName("Modif1");
+		dao.saveOrUpdateContact(damien);
+		damien.setFirstName("Modif2");
+		dao.saveOrUpdateContact(damien);
+		damien.setFirstName("Dam");
+		dao.saveOrUpdateContact(damien);
+		
+		IGroupeContact groupeMiageCll = (IGroupeContact)appContext.getBean("idGroupeMiageCll");
+		IGroupeContact groupeMiageApp = (IGroupeContact)appContext.getBean("idGroupeMiageApp");
+		GroupeService gs = new GroupeService();
+		gs.saveOrUpdateGroupeContact(groupeMiageCll);
+		gs.saveOrUpdateGroupeContact(groupeMiageApp);
+		
+		
 		
 		System.out.println("----------Test Cache------------------");
 		IContact c = (Contact) dao.getContact(1);

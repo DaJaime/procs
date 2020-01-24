@@ -14,12 +14,14 @@
 			org.springframework.web.context.request.RequestContextListener
 		</listener-class>
   </listener>
+  
   <servlet>
     <description></description>
-    <display-name>HelloServlet</display-name>
-    <servlet-name>HelloServlet</servlet-name>
-    <servlet-class>servlet.HelloServlet</servlet-class>
+    <display-name>CreateContact</display-name>
+    <servlet-name>CreateContact</servlet-name>
+    <servlet-class>servlet.CreateContact</servlet-class>
   </servlet>
+  
   <listener>
     <listener-class>
 			org.springframework.web.context.ContextLoaderListener
@@ -30,9 +32,10 @@
 			org.springframework.web.context.request.RequestContextListener
 		</listener-class>
   </listener>
+  
   <servlet-mapping>
-    <servlet-name>HelloServlet</servlet-name>
-    <url-pattern>/HelloServlet</url-pattern>
+    <servlet-name>CreateContact</servlet-name>
+    <url-pattern>/CreateContact</url-pattern>
   </servlet-mapping>
   
   <!-- For REST API -->
