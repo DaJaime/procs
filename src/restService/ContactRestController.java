@@ -18,7 +18,7 @@ public class ContactRestController {
     @GET()
     @Path("{id}")
     public String getContactApi(@PathParam("id") long id) {
-    	ContactService service = new ContactService();
+    	//ContactService service = new ContactService();
     	// Contact contact = (Contact) service.getContact(id);
     	// System.out.println(contact.toString());
         return "Hello";

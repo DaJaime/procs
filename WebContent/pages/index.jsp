@@ -1,11 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"
-import = "service.ContactService"
-import = "service.GroupeService"
-import = "entities.Contact"
-import = "entities.GroupeContact"
-import = "entities.Phone"
-import = "entities.Entreprise"
-import = "java.util.List"
 %>
 <!DOCTYPE html>
 <html lang="en" >
