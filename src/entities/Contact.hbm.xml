@@ -15,12 +15,12 @@
 		<property name = "lastName" column = "LASTNAME"/>
 		<property name = "email" column = "EMAIL"/>
 		
-		<set name="phones" inverse=" true " cascade="all">
+		<set name="phones" inverse=" true " cascade="all" lazy="false">
 			<key column="ID_CONT" />
 			<one-to-many class="Phone"/>
 		</set>
 		
-		<set name="groupeContact" cascade="persist, save-update" table="InGroupe" inverse="true">
+		<set name="groupeContact" cascade="persist, save-update" table="InGroupe" inverse="true" lazy="false">
 			<key column="ID_CONTACT"/>
 			<many-to-many class="GroupeContact" column="ID_GROUPECONTACT"/>
 		</set>
