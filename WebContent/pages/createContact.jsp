@@ -60,11 +60,6 @@
           <input type="text" class="form-control" name="groupe" placeholder="Dans quel groupe l'ajouter ?">
         </div>
         
-         <div class="form-group">
-          <label for="phone">Description du groupe</label>
-          <input type="text" class="form-control" name="descgroupe" placeholder="Collégue du bureau">
-        </div>
-        
       </div>
     </div>
     <button type="submit" class="btn btn-primary">Envoyer</button>

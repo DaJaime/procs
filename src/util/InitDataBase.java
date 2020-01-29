@@ -17,7 +17,7 @@ public class InitDataBase
 
 	public void init() 
 	{
-		ApplicationContext appContext = new FileSystemXmlApplicationContext(da);
+		ApplicationContext appContext = new FileSystemXmlApplicationContext(ha);
 		ContactService service = ContactService.getInstance();
 		
 		System.out.println("----------Test AROUND AOP------------------");

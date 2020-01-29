@@ -6,6 +6,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entities.Contact;
+import entities.IContact;
+import entities.IPhone;
+import entities.Phone;
 import service.ContactService;
 
 /**
@@ -41,9 +45,13 @@ public class CreateContact extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String descphone = request.getParameter("descphone");
 		String groupe = request.getParameter("groupe");
-		String descgroupe = request.getParameter("descgroupe");
 		
-		System.out.println(nom + prenom + mail + phone + descphone + groupe + descgroupe );
+		IContact contact = new Contact(nom,prenom,mail);
+		Phone tel = new Phone(phone, descphone);
+		ContactService cs = ContactService.getInstance();
+		
+		cs.saveOrUpdateContact(contact);
+		cs.addPhone(contact, tel);
 		    
 	}
 
