@@ -38,4 +38,6 @@ public interface IDAOContact {
 
 	void deleteGroupe(long id);
 
+	List<Contact> getListContact();
+
 }

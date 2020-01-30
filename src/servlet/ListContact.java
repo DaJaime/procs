@@ -1,27 +1,27 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entities.Contact;
-import entities.IContact;
-import entities.IPhone;
-import entities.Phone;
 import service.ContactService;
 
 /**
- * Servlet implementation class HelloServlet
+ * Servlet implementation class ListContact
  */
-public class CreateContact extends HttpServlet {
+public class ListContact extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public CreateContact() {
+    public ListContact() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,8 +31,15 @@ public class CreateContact extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
+		System.out.println("looooooooooooooool");
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/contactList.jsp");
+		ContactService cs = ContactService.getInstance();
+		List<Contact> list = cs.getListContact();
+		request.setAttribute("list", list);
+		System.out.println("----------------------------------");
+		System.out.println(list.get(1).getFirstName());
+		requestDispatcher.forward(request, response);
 		
-
 	}
 
 	/**
@@ -40,22 +47,14 @@ public class CreateContact extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		String nom = request.getParameter("nom");
-		String prenom = request.getParameter("prenom");
-		String mail = request.getParameter("mail");
-		String phone = request.getParameter("phone");
-		String descphone = request.getParameter("descphone");
-		String groupe = request.getParameter("groupe");
-		
-		IContact contact = new Contact(nom,prenom,mail);
-		Phone tel = new Phone(phone, descphone);
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/contactList.jsp");
 		ContactService cs = ContactService.getInstance();
+		List<Contact> list = cs.getListContact();
+		request.setAttribute("list", list);
+		System.out.println("----------------------------------");
+		System.out.println(list.get(1).getFirstName());
+		requestDispatcher.forward(request, response);
 		
-		cs.saveOrUpdateContact(contact);
-		cs.addPhone(contact, tel);
-		
-		response.sendRedirect("pages/index.jsp");
-		    
 	}
 
 }

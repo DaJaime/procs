@@ -14,14 +14,12 @@
 			org.springframework.web.context.request.RequestContextListener
 		</listener-class>
   </listener>
-  
   <servlet>
     <description></description>
     <display-name>CreateContact</display-name>
     <servlet-name>CreateContact</servlet-name>
     <servlet-class>servlet.CreateContact</servlet-class>
   </servlet>
-  
   <listener>
     <listener-class>
 			org.springframework.web.context.ContextLoaderListener
@@ -32,30 +30,47 @@
 			org.springframework.web.context.request.RequestContextListener
 		</listener-class>
   </listener>
-  
   <servlet-mapping>
     <servlet-name>CreateContact</servlet-name>
     <url-pattern>/CreateContact</url-pattern>
   </servlet-mapping>
-  
-  <!-- For REST API -->
-<servlet>
-  <servlet-name>Jersey REST Service</servlet-name>
-<servlet-class>
+  <servlet>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <servlet-class>
   com.sun.jersey.spi.container.servlet.ServletContainer
 </servlet-class>
-  <init-param>
-    <param-name>com.sun.jersey.config.property.packages</param-name>
-    <param-value>restService</param-value>
-  </init-param>
-  <init-param>
-            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
-            <param-value>true</param-value>
-        </init-param>
-  <load-on-startup>1</load-on-startup>
-</servlet>
-<servlet-mapping>
-  <servlet-name>Jersey REST Service</servlet-name>
-  <url-pattern>/api/*</url-pattern>
-</servlet-mapping>
+    <init-param>
+      <param-name>com.sun.jersey.config.property.packages</param-name>
+      <param-value>restService</param-value>
+    </init-param>
+    <init-param>
+      <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
+      <param-value>true</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Jersey REST Service</servlet-name>
+    <url-pattern>/api/*</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>CreateGroupe</display-name>
+    <servlet-name>CreateGroupe</servlet-name>
+    <servlet-class>servlet.CreateGroupe</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CreateGroupe</servlet-name>
+    <url-pattern>/CreateGroupe</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ListContact</display-name>
+    <servlet-name>ListContact</servlet-name>
+    <servlet-class>servlet.ListContact</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListContact</servlet-name>
+    <url-pattern>/ListContact</url-pattern>
+  </servlet-mapping>
 </web-app>

@@ -67,6 +67,19 @@ public class DAOContact implements IDAOContact {
 			return null;
 	}
 	
+	// HQL : retourne une liste de contact
+	@Override
+	public List<Contact> getListContact() 
+	{
+		Query requete = sessionFactory.getCurrentSession().createQuery("select * from Contact;");
+		List<Contact> resultats = requete.list();
+		
+		if(!resultats.isEmpty())
+			return resultats;
+		else
+			return null;
+	}
+	
 	// SQL : retourne une liste de contact filtre sur le lastName
 	@Override
 	public List getListContactFilterlastName(String lastName) {

@@ -27,7 +27,7 @@ public class ContactService
 	
 	private ContactService()
 	{
-		ApplicationContext appContext = new FileSystemXmlApplicationContext(da);
+		ApplicationContext appContext = new FileSystemXmlApplicationContext(ha);
 		dao = (IDAOContact)appContext.getBean("idDaoContact");
 	}
 	
@@ -52,18 +52,28 @@ public class ContactService
 		return c;
 	}
 	
-	public List<Contact> getListContactFilterFirstName(String firstName) {
+	public List<Contact> getListContactFilterFirstName(String firstName) 
+	{
 		List<Contact> listContact = dao.getListContactFilterFirstName(firstName);
 		return listContact;
 	}
 	
-	public List getListContactFilterlastName(String lastName) {
+	public List getListContactFilterlastName(String lastName) 
+	{
 		List listContact = dao.getListContactFilterlastName(lastName);
 		return listContact;
 	}
 	
-	public List getListContactFilterMail(String mail) {
+	public List getListContactFilterMail(String mail) 
+	{
 		List listContact = dao.getListContactFilterMail(mail);
+		return listContact;
+	}
+	
+	public List<Contact> getListContact() 
+	{
+		List<Contact> listContact = dao.getListContact();
+		System.out.println(listContact);
 		return listContact;
 	}
 	/********************************************

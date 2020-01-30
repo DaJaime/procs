@@ -16,10 +16,11 @@
 
 <nav>
   <ul>
-    <li><a href="">Afficher les contacts</a></li>
+    <li><a href="../ListContact">Afficher les contacts</a></li>
     <li><a href="">Afficher les groupes</a></li>
     <li><a href="initDataBase.jsp">Peupler la base</a></li>
     <li><a href="createContact.jsp">Créer un contact</a></li>
+    <li><a href="createGroupe.jsp">Créer un groupe</a></li>
   </ul>
 </nav>
 
