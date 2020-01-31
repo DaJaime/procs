@@ -21,6 +21,7 @@
     <li><a href="initDataBase.jsp">Peupler la base</a></li>
     <li><a href="createContact.jsp">Créer un contact</a></li>
     <li><a href="createGroupe.jsp">Créer un groupe</a></li>
+    <li><a href="requetSpe.jsp">Requêtes spéciales</a></li>
   </ul>
 </nav>
 

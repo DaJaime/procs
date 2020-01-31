@@ -29,9 +29,8 @@
 	<th>Supprimer</th>
 </tr>
 <%
-/* 
 List<Contact> c = (ArrayList<Contact>)request.getAttribute("list");
- 
+ if(c != null){
     for(Contact student : c)
     {
         out.print("Id: " + student.getId());
@@ -43,7 +42,7 @@ List<Contact> c = (ArrayList<Contact>)request.getAttribute("list");
         out.print("<br/>");
         out.print("<br/>");
     }
- */
+ }
 %>
 </table>
 </body>

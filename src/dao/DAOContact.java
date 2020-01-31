@@ -1,5 +1,7 @@
 package dao;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -71,7 +73,7 @@ public class DAOContact implements IDAOContact {
 	@Override
 	public List<Contact> getListContact() 
 	{
-		Query requete = sessionFactory.getCurrentSession().createQuery("select * from Contact;");
+		Query requete = sessionFactory.getCurrentSession().createQuery("from Contact");
 		List<Contact> resultats = requete.list();
 		
 		if(!resultats.isEmpty())
@@ -82,24 +84,32 @@ public class DAOContact implements IDAOContact {
 	
 	// SQL : retourne une liste de contact filtre sur le lastName
 	@Override
-	public List getListContactFilterlastName(String lastName) {
+	public List<Contact> getListContactFilterlastName(String lastName) {
+		List<Contact> lst = new ArrayList<Contact>();
 		StringBuffer requet = new StringBuffer();
 		requet.append("select ID_CONTACT from Contact where LASTNAME like '");
 		requet.append(lastName);
 		requet.append("%'");
 		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(requet.toString());
-		List lst = query.list();
+		List<BigInteger> lstInt = query.list();
 		
-		if(!lst.isEmpty())
+		if(!lstInt.isEmpty()) {
+			for(BigInteger id : lstInt) {
+				lst.add((Contact) this.getContact(id.longValue()));
+			}
 			return lst;
+		}
 		else
 			return null;
 	}
 	
 	// Criteria
 	@Override
-	public List getListContactFilterMail(String mail) {
-		List lst = (List) sessionFactory.getCurrentSession().createCriteria(Contact.class).add(Restrictions.like("email", "la%")).list();
+	public List<Contact> getListContactFilterMail(String mail) {
+		StringBuilder sb = new StringBuilder();
+		sb.append(mail);
+		sb.append("%");
+		List<Contact> lst = sessionFactory.getCurrentSession().createCriteria(Contact.class).add(Restrictions.like("email", sb.toString())).list();
 		if(!lst.isEmpty())
 			return lst;
 		else

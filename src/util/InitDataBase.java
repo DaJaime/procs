@@ -17,7 +17,7 @@ public class InitDataBase
 
 	public void init() 
 	{
-		ApplicationContext appContext = new FileSystemXmlApplicationContext(ha);
+		ApplicationContext appContext = new FileSystemXmlApplicationContext(da);
 		ContactService service = ContactService.getInstance();
 		
 		System.out.println("----------Test AROUND AOP------------------");
@@ -54,6 +54,7 @@ public class InitDataBase
 		System.out.println("----------Test Cache------------------");
 		IContact c = (Contact) service.getContact(1);
 		System.out.println(c.getFirstName());
+		System.out.println("----------Fin Test Cache------------------");
 		
 		IGroupeContact groupeMiageCll = (IGroupeContact)appContext.getBean("idGroupeMiageCll");
 		IGroupeContact groupeMiageApp = (IGroupeContact)appContext.getBean("idGroupeMiageApp");

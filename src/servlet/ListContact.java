@@ -31,7 +31,6 @@ public class ListContact extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		System.out.println("looooooooooooooool");
 		RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/contactList.jsp");
 		ContactService cs = ContactService.getInstance();
 		List<Contact> list = cs.getListContact();
@@ -47,13 +46,7 @@ public class ListContact extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/contactList.jsp");
-		ContactService cs = ContactService.getInstance();
-		List<Contact> list = cs.getListContact();
-		request.setAttribute("list", list);
-		System.out.println("----------------------------------");
-		System.out.println(list.get(1).getFirstName());
-		requestDispatcher.forward(request, response);
+
 		
 	}
 

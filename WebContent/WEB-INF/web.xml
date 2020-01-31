@@ -73,4 +73,14 @@
     <servlet-name>ListContact</servlet-name>
     <url-pattern>/ListContact</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ReqSpe</display-name>
+    <servlet-name>ReqSpe</servlet-name>
+    <servlet-class>servlet.ReqSpe</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ReqSpe</servlet-name>
+    <url-pattern>/ReqSpe</url-pattern>
+  </servlet-mapping>
 </web-app>
