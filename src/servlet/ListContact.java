@@ -35,8 +35,6 @@ public class ListContact extends HttpServlet {
 		ContactService cs = ContactService.getInstance();
 		List<Contact> list = cs.getListContact();
 		request.setAttribute("list", list);
-		System.out.println("----------------------------------");
-		System.out.println(list.get(1).getFirstName());
 		requestDispatcher.forward(request, response);
 		
 	}
@@ -46,7 +44,6 @@ public class ListContact extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-
 		
 	}
 

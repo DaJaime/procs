@@ -3,7 +3,8 @@
     import ="java.util.ArrayList"
     import ="java.util.List"
 	import = "entities.GroupeContact"
-    
+    import = "entities.Contact"
+    import = "entities.Phone"
     
     %>
 <!DOCTYPE html>
@@ -24,42 +25,50 @@
 <body>
 
 <ul class="nav nav-pills">
-  <li role="presentation" class="active"><a href="pages/index.jsp"">Page d'accueil</a></li>
+  <li role="presentation"><a href="pages/index.jsp">Page d'accueil</a></li>
   <li role="presentation"><a href="ListContact">Liste des contacts</a></li>
   <li role="presentation"><a href="CreateGroupe">Liste des groupes</a></li>
 </ul>
 
-
+<% Contact c = (Contact)request.getAttribute("contact");%>
 
 <div class="container">
-  <form method="post" action="CreateContact">
-    <h2>Créer un contact</h2>
+  <form method="post" action="UpdateContact">
+    <h2>Modifier un contact</h2>
     <div class="row">
       <div class="col-md-6">
         <div class="form-group">
           <label for="first">Nom</label>
-          <input type="text" class="form-control" placeholder="Durand" name="nom">
+          <%out.println("<input type='text' class='form-control' name='nom' value='"+c.getLastName()+"'>");%>
         </div>
-
+		<%out.println("<input type='hidden' class='form-control' name='id' value='"+c.getId()+"'>");%>
         <div class="form-group">
           <label for="last">Prénom</label>
-          <input type="text" class="form-control" placeholder="toto" name="prenom">
+          <%out.println("<input type='text' class='form-control' name='prenom' value='"+c.getFirstName()+"'>");%>
         </div>
 
         <div class="form-group">
           <label for="company">Mail</label>
-          <input type="text" class="form-control" placeholder="toto@gmail.com" name="mail">
+          <%out.println("<input type='text' class='form-control' name='mail' value='"+c.getEmail()+"'>");%>
         </div>
+
+          <%
+          for(Phone p : c.getPhones())
+		      	{		
+        	  		out.println("<div class='form-group'><label for='phone'>Téléphone</label>");
+        	  		out.println("<input type='text' class='form-control' name='phone' value='"+p.getNumber()+"'>");
+        	  		out.println("</div>");
+		      	}
+          %>        
         
-        <div class="form-group">
-          <label for="phone">Téléphone</label>
-          <input type="tel" class="form-control" name="phone" placeholder="0607080910">
-        </div>
-        
-        <div class="form-group">
-          <label for="phone">Description du téléphone</label>
-          <input type="text" class="form-control" name="descphone" placeholder="Toto le collégue du bureau">
-        </div>
+          <%
+          for(Phone p : c.getPhones())
+		      	{	
+        	  		out.println("<div class='form-group'><label for='phone'>Description du téléphone</label>");
+        	  		out.println("<input type='text' class='form-control' name='descphone' value='"+p.getDesc()+"'>");
+        	  		out.println("</div>");
+		      	}
+          %> 
         
          <div class="form-group">
           <label for="phone">Groupe</label>

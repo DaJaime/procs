@@ -3,6 +3,7 @@ package dao;
 import java.util.List;
 
 import entities.Contact;
+import entities.GroupeContact;
 import entities.IContact;
 import entities.IGroupeContact;
 import entities.IPhone;
@@ -39,5 +40,9 @@ public interface IDAOContact {
 	void deleteGroupe(long id);
 
 	List<Contact> getListContact();
+
+	List<GroupeContact> getListGroupe();
+
+	IGroupeContact getGroupeContact(long id);
 
 }

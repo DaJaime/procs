@@ -5,6 +5,7 @@
 	import ="java.util.List"
 	import ="java.util.Iterator"
 	import = "entities.Contact"
+	import = "entities.Phone"
 %>
 
 
@@ -19,32 +20,46 @@
 <title>Liste Contact</title>
 </head>
 <body>
-<h1>Tous vos contacts</h1>
 
-<table class="table">
-<tr>
-	<th>Nom</th>
-	<th>Prenom</th>
-	<th>Modifier</th>
-	<th>Supprimer</th>
-</tr>
-<%
-List<Contact> c = (ArrayList<Contact>)request.getAttribute("list");
- if(c != null){
-    for(Contact student : c)
-    {
-        out.print("Id: " + student.getId());
-        out.print("<br/>");
-        out.print("Name: " + student.getFirstName());
-        out.print("<br/>");
-        out.print("Age: " + student.getLastName());
-        
-        out.print("<br/>");
-        out.print("<br/>");
-    }
- }
+<ul class="nav nav-pills">
+  <li role="presentation"><a href="pages/index.jsp">Page d'accueil</a></li>
+  <li role="presentation" class="active"><a href="ListContact">Liste des contacts</a></li>
+  <li role="presentation"><a href="CreateGroupe">Liste des groupes</a></li>
+</ul>
+
+
+<% 
+List<Contact> liste = new ArrayList<Contact>();
+liste = (ArrayList<Contact>) request.getAttribute("list");
+String type = "";
+for(int i = 0;i<liste.size();i++)
+{
+	out.println("");
+	out.println("<br/>");
+	out.println("<br/>");
+	pageContext.setAttribute("id", liste.get(i).getId());
+	
+	type = liste.get(i).getClass().getSimpleName();
+	
+	out.println("<div class='card'>");
+	out.println("<div class='card-header'>" + type + "</div>");
+	out.println("<div class='card-block'>");
+	
+	out.println("<h4 class='card-title'>" + liste.get(i).getFirstName() +" "+ liste.get(i).getLastName() + "</h4>");
+	out.println("<p class='card-text'>" + liste.get(i).getEmail() + "</p> <br/>");
+	for(Phone p : liste.get(i).getPhones())
+	{		
+		out.println("<p class='card-text'> <b>Description:</b> " + p.getDesc() + ".  <b>Numéro:</b> "+ p.getNumber() +"  </p> <br/>");
+	}
+	
+	out.println("<a href='UpdateContact?modifier="+liste.get(i).getId()+"'>Modifier</a>");
+	out.println("<a href='UpdateContact?supprimer="+liste.get(i).getId()+"'>Supprimer</a>");
+	
+}
+out.println("</div>");
+out.println("</div>");
 %>
-</table>
 </body>
 </html:html>
+
 

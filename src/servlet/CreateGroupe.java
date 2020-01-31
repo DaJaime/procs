@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,8 +32,11 @@ public class CreateGroupe extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
-		// TODO Auto-generated method stub
-		
+		RequestDispatcher requestDispatcher = request.getRequestDispatcher("pages/groupeList.jsp");
+		ContactService cs = ContactService.getInstance();
+		List<GroupeContact> listGroupe = cs.getListGroupe();
+		request.setAttribute("listGroupe", listGroupe);
+		requestDispatcher.forward(request, response);	
 	}
 
 	/**

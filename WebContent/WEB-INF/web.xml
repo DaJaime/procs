@@ -83,4 +83,14 @@
     <servlet-name>ReqSpe</servlet-name>
     <url-pattern>/ReqSpe</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateContact</display-name>
+    <servlet-name>UpdateContact</servlet-name>
+    <servlet-class>servlet.UpdateContact</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateContact</servlet-name>
+    <url-pattern>/UpdateContact</url-pattern>
+  </servlet-mapping>
 </web-app>

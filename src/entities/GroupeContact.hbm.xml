@@ -13,7 +13,7 @@
 		<property name = "name" column = "NAME"/>
 		<property name = "description" column = "DESCRIPTION"/>
 		
-		<set name="contacts" table="InGroupe">
+		<set name="contacts" table="InGroupe" lazy="false">
 		<key column="ID_GROUPECONTACT"/>
 		<many-to-many class="Contact" column="ID_CONTACT"/>
 		</set>

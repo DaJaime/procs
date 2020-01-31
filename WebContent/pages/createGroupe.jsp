@@ -19,8 +19,8 @@
 
 <ul class="nav nav-pills">
   <li role="presentation" class="active"><a href="index.jsp">Page d'accueil</a></li>
-  <li role="presentation"><a href="#">Liste des contacts</a></li>
-  <li role="presentation"><a href="#">Liste des groupes</a></li>
+  <li role="presentation"><a href="../ListContact">Liste des contacts</a></li>
+  <li role="presentation"><a href="../CreateGroupe">Liste des groupes</a></li>
 </ul>
 
 
