@@ -71,7 +71,7 @@ public class DAOContact implements IDAOContact {
 	@Override
 	public List<Contact> getListContact() 
 	{
-		Query requete = sessionFactory.getCurrentSession().createQuery("select * from Contact;");
+		Query requete = sessionFactory.getCurrentSession().createQuery("from Contact");
 		List<Contact> resultats = requete.list();
 		
 		if(!resultats.isEmpty())
@@ -141,4 +141,21 @@ public class DAOContact implements IDAOContact {
 		sessionFactory.getCurrentSession().delete(gc);
 	}
 	
+	// HQL : retourne une liste de contact
+	@Override
+	public List<GroupeContact> getListGroupe() 
+	{
+		Query requete = sessionFactory.getCurrentSession().createQuery("from GroupeContact");
+		List<GroupeContact> resultats = requete.list();
+		if(!resultats.isEmpty())
+			return resultats;
+		else
+			return null;
+	}
+	
+	@Override
+	public IGroupeContact getGroupeContact(long id) {
+		IGroupeContact grp = (IGroupeContact) sessionFactory.getCurrentSession().get(GroupeContact.class, id);
+		return grp;
+	}
 }

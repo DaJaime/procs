@@ -73,4 +73,14 @@
     <servlet-name>ListContact</servlet-name>
     <url-pattern>/ListContact</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>UpdateContact</display-name>
+    <servlet-name>UpdateContact</servlet-name>
+    <servlet-class>servlet.UpdateContact</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UpdateContact</servlet-name>
+    <url-pattern>/UpdateContact</url-pattern>
+  </servlet-mapping>
 </web-app>

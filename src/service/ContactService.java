@@ -73,7 +73,6 @@ public class ContactService
 	public List<Contact> getListContact() 
 	{
 		List<Contact> listContact = dao.getListContact();
-		System.out.println(listContact);
 		return listContact;
 	}
 	/********************************************
@@ -112,6 +111,7 @@ public class ContactService
 	//permet d'ajouter un contact dans un groupe
 	public void addContactGroupe(GroupeContact groupecontact, Contact contact) 
 	{
+		System.out.println("----------"+groupecontact.getContacts());
 		groupecontact.getContacts().add(contact);
 		contact.getGroupeContact().add(groupecontact);
 		dao.saveOrUpdateGroupeContact(groupecontact);
@@ -125,6 +125,18 @@ public class ContactService
 		contact.getGroupeContact().remove(groupecontact);
 		System.out.println("-------------------------------");
 		dao.saveOrUpdateContact(contact);
+	}
+	
+	public List<GroupeContact> getListGroupe() 
+	{
+		List<GroupeContact> listGroupe = dao.getListGroupe();
+		return listGroupe;
+	}
+	
+	public IGroupeContact getGroupeContact(long id)
+	{
+		IGroupeContact grp = dao.getGroupeContact(id);
+		return grp;
 	}
 	
 }
